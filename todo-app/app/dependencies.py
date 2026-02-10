@@ -1,4 +1,4 @@
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status, Query
 from app.models import Todo
 from app import crud
 
@@ -12,3 +12,13 @@ def get_todo_or_404(todo_id: int) -> Todo:
         )
     return todo
 
+class PaginationParams:
+    """페이지네이션 매개변수"""
+
+    def __init__(
+        self,
+        skip: int = Query(default=0, ge=0, description="건너뛸 개수"),
+        limit: int = Query(default=10, ge=1, le=100, description="가져올 개수")
+    ):
+        self.skip = skip
+        self.limit = limit
