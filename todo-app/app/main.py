@@ -1,12 +1,24 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-from fastapi.responses import RequestValidationError
+from fastapi.exceptions import RequestValidationError
 from app.routers import todos
+from app.database import create_db_and_tables
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """앱 시작/종료 시 실행되는 코드"""
+    # 시작 시 테이블 생성
+    create_db_and_tables()
+    yield
+    # 종료 시 : (필요하면 정리 코드)
+
+# lifespan : 앱의 생명주기 이벤트를 처리
 app = FastAPI(
     title="TODO API",
     description="할 일 관리 API",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # 라우터 등록
