@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from app.routers import users, posts, comments
+from app.routers import auth, users, posts, comments
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -15,6 +15,7 @@ app = FastAPI(
 )
 
 # 라우터 등록
+app.include_router(auth.router)
 app.include_router(users.router)
 app.include_router(posts.router)
 app.include_router(comments.router)
