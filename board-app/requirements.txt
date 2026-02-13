@@ -8,6 +8,3 @@ alembic
 python-dotenv
 python-multipart
 pydantic-settings
-pytest
-pytest-asyncio
-httpx
