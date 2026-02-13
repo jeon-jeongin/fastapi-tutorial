@@ -30,7 +30,7 @@ class User(UserBase, table=True):
 
     # 관계 정의
     posts: list["Post"] = Relationship(back_populates="author")
-    comment: list["Comment"] = Relationship(back_populates="author")
+    comments: list["Comment"] = Relationship(back_populates="author")
 
 class UserResponse(UserBase):
     """사용자 응답 (비밀번호 제외)"""

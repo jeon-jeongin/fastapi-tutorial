@@ -25,6 +25,10 @@ class Comment(CommentBase, table=True):
     post_id: int = Field(foreign_key="post.id")
     created_at: datetime = Field(default_factory=datetime.now)
 
+    # 관계 정의
+    author: "User" = Relationship(back_populates="comments")
+    post: "Post" = Relationship(back_populates="comments")
+
 class CommentResponse(CommentBase):
     """댓글 응답"""
     id: int
