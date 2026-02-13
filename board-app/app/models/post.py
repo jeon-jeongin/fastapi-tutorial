@@ -47,3 +47,7 @@ class PostListResponse(SQLModel):
     author_id: int
     views: int
     created_at: datetime
+
+class PostListWithCount(PostListResponse):
+    """댓글 수가 포함된 게시글 목록"""
+    comment_count: int

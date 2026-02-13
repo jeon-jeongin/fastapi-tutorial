@@ -10,6 +10,7 @@ from app.models.post import (
     PostUpdate,
     PostResponse,
     PostListResponse,
+    PostListWithCount,
 )
 from app.models.comment import (
     Comment,
@@ -20,6 +21,6 @@ from app.models.comment import (
 
 __all__ = [
     "User", "UserCreate", "UserUpdate", "UserResponse",
-    "Post", "PostCreate", "PostUpdate", "PostResponse", "PostListResponse",
+    "Post", "PostCreate", "PostUpdate", "PostResponse", "PostListResponse", "PostListWithCount",
     "Comment", "CommentCreate", "CommentUpdate", "CommentResponse",
 ]
